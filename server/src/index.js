@@ -10,17 +10,9 @@ app.use(express.json());
 const db = mysql.createConnection({
   host: "127.0.0.1",
   user: "root",
-  password: "123456",
+  password: "",
   database: "next_test",
 });
-
-// Getting Request
-app.get('/', (req, res) => {
-    // Sending the response
-    res.send('Hello World!')
-    // Ending the response
-    res.end()
-})
 
 app.get("/product", (req, res) => {
   db.query("SELECT * FROM product", (err, result) => {
@@ -33,7 +25,7 @@ app.get("/product", (req, res) => {
 });
 
 // Establishing the port
-const PORT = process.env.PORT ||5000;
+const PORT = process.env.PORT || 3001;
 
 // Executing the server on given port number
 app.listen(PORT, console.log(
