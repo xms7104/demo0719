@@ -11,7 +11,7 @@ const db = mysql.createConnection({
   host: "127.0.0.1",
   user: "root",
   password: "",
-  database: "next_test",
+  database: "demo0719",
 });
 
 
@@ -26,7 +26,7 @@ app.get("/product", (req, res) => {
 });
 
 // Establishing the port
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5000;
 
 // Executing the server on given port number
 app.listen(PORT, console.log(
