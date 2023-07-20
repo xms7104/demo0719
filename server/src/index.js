@@ -14,6 +14,16 @@ const db = mysql.createConnection({
   database: "next_test",
 });
 
+app.get("/", (req, res) => {
+  db.query("SELECT * FROM product", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 
 app.get("/product", (req, res) => {
   db.query("SELECT * FROM product", (err, result) => {
