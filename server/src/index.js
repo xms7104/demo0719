@@ -15,7 +15,7 @@ const db = mysql.createConnection({
 });
 // 全域錯誤處理中介軟體
 app.use((err, req, res, next) => {
-  console.log(err);
+  console.error(err);
   res.status(500).send("發生內部錯誤");
 });
 
@@ -23,7 +23,7 @@ app.use((err, req, res, next) => {
 app.get("/", (req, res, next) => {
   db.query("SELECT * FROM product", (err, result) => {
     if (err) {
-      console.log("錯誤發生：", error);
+      console.error("錯誤發生：", error);
       return next(err); // 將錯誤交給下一個中介軟體處理
     } else {
       res.send(result);
