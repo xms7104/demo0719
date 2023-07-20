@@ -13,16 +13,23 @@ const db = mysql.createConnection({
   password: "",
   database: "next_test",
 });
+// 全域錯誤處理中介軟體
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).send("發生內部錯誤");
+});
 
-app.get("/", (req, res) => {
+// 路由中的查詢
+app.get("/", (req, res, next) => {
   db.query("SELECT * FROM product", (err, result) => {
     if (err) {
-      console.log(err);
+      return next(err); // 將錯誤交給下一個中介軟體處理
     } else {
       res.send(result);
     }
   });
 });
+
 
 
 app.get("/product", (req, res) => {
