@@ -1,7 +1,7 @@
 const api = {
-  hostname: "http://localhost:3001",
+  hostname: "https://heroku-node-js.vercel.app/api/",
   async product() {
-    const response = await fetch(`${this.hostname}/product`, {
+    const response = await fetch(`${this.hostname}product`, {
       headers: new Headers({
         "Content-type": "application/json",
         "if-none-match": "",
